@@ -41,24 +41,18 @@ function App() {
     };
     //for isActive control external style is not possible
     return (
-      <View style={{position: 'relative', margin: 10}}>
+      <View style={styles.renderItemContainer}>
         <TouchableOpacity
-          style={{
-            borderWidth: isActive ? 2 : 0,
-            borderColor: '#b1e6ba',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: 20,
-            borderRadius: isActive ? 0 : 10,
-          }}
+          style={[
+            styles.renderImageContainer,
+            {borderWidth: isActive ? 2 : 0, borderRadius: isActive ? 0 : 10},
+          ]}
           onLongPress={drag}>
           <Image
-            style={{
-              width: 180,
-              height: isActive ? 280 : 240,
-              resizeMode: 'cover',
-              borderRadius: isActive ? 0 : 10,
-            }}
+            style={[
+              styles.renderImage,
+              {height: isActive ? 280 : 240, borderRadius: isActive ? 0 : 10},
+            ]}
             source={{uri: item?.uri}}
           />
         </TouchableOpacity>
@@ -86,10 +80,7 @@ function App() {
       />
       <AddButton onPress={() => setModalFlag(true)} />
       <View style={styles.underline}>
-        <Text
-          style={styles.underlineText}>
-          Your Last Dating App
-        </Text>
+        <Text style={styles.underlineText}>Your Last Dating App</Text>
       </View>
     </View>
   );
@@ -119,6 +110,21 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     color: 'white',
     fontFamily: 'Pacifico-Regular',
-    paddingTop:4
+    paddingTop: 4,
+  },
+
+  renderItemContainer: {position: 'relative', margin: 10},
+
+  renderImageContainer: {
+    borderColor: '#b1e6ba',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 20,
+  },
+
+  renderImage: {
+    width: 180,
+
+    resizeMode: 'cover',
   },
 });
